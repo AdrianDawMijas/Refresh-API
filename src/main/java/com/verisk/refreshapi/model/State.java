@@ -1,6 +1,7 @@
 package com.verisk.refreshapi.model;
 
 
-public enum States {
-        
+public enum State {
+    Done,
+    Testing
 }

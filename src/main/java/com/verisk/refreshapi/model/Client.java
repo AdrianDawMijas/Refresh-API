@@ -1,19 +1,19 @@
 package com.verisk.refreshapi.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Clients {
+@Entity
+public class Client {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,4 +21,12 @@ public class Clients {
 
     @Column(unique = true, nullable = false)
     private String name;
+
+    @ManyToMany
+    private List<Environment> environmentList;
+
+    @OneToMany
+    private List<Refresh> refreshList;
+
+
 }
